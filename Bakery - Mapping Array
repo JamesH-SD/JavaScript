@@ -1,0 +1,36 @@
+function mapCakes(treato) {
+            console.log(treato, "treato")
+
+            //-----batters
+            //var battersArray = [];
+            if (treato.batters && treato.batters.batter) { //if has treato.batters and treato.batters.batter
+                battersArray = treato.batters.batter.map(mapBatters) //we want to map the batter, it'll make a new array of batter
+            }
+
+            if (treato.topping) {
+                toppingArray = treato.topping.map(mapTopping)
+            }
+
+            if (treato.)
+            let result = {
+                id: Number(treato.id)
+                , type: treato.type
+                , name: treato.name
+                , ppu: treato.ppu
+                , batters: battersArray.join("")
+                , ingredients: toppingArray
+                , countOfFillings: ""
+            }
+            console.log(result, "result")
+        }
+
+        var mappedCakes = getCakes(bakery.items.item)
+        console.log(mappedCakes, "mappedCakes")
+
+        function mapBatters(batter) { //callback function, this will return the batter type
+            return batter.type
+        }
+
+        function mapTopping(topping) {
+            return topping.type
+        }
