@@ -1,0 +1,42 @@
+function startUp() {
+        wiredUpButtonHandler();
+
+        console.log("Start-up is firing!!");
+      }
+
+      function wiredUpButtonHandler() {
+        $(".clone-container").on("click", ".t-3", targetCard);
+      }
+
+      function targetCard() {
+        var thisItem = $(this).find(".card-text").html();
+
+        console.log(thisItem);
+      }
+
+      function getTemplate() {
+        var team = $($("#templateThree").html()).clone();
+
+        return team;
+      }
+
+      function renderTeamMember(teamMember) {
+        var team = getTemplate();
+        var container = $(".clone-container");
+
+        team.find(".card-img-top").attr("src", teamMember.avatar);
+        team
+          .find(".card-title")
+          .text(`${teamMember.firstName} ${teamMember.lastName}`);
+        team.find(".card-text").text(`${teamMember.id} \n ${teamMember.email}`);
+
+        container.append(team);
+      }
+
+      function renderTeam(team) {
+        for (let i = 0; i < team.length; i++) {
+          const teamMember = team[i];
+
+          renderTeamMember(teamMember);
+        }
+      }
