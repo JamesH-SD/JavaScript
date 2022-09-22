@@ -1,0 +1,29 @@
+ var letter = {
+          address: "1 Hacker Way",
+          from: "Mark",
+          to: "You",
+        };
+        //
+        var usps = function (letters, speed) {
+            if(letters.length > 5){
+                fedEx(letters, null, 1000)
+            }
+        };
+
+        var mailCarrier = function (letter) {
+          var letters = [];
+          var speed = "slow"
+          letter.push(letters);
+
+          usps(letters, speed);
+        };
+
+        var fedEx = function (letters, boxes, payment) {
+          if(payment == null || payment == undefined || payment == 0){
+              return "Payment Required";
+          } else if(payment < 1000){
+              return "Payment Insufficient";
+          } else{
+              return "OK";
+          }
+        };
