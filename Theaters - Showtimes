@@ -1,0 +1,106 @@
+      function startUp() {
+        wireUpHandlers();
+      }
+
+      function wireUpHandlers() {
+        $("#showItems").on("click", onShowItems);
+        $("#emptyItems").on("click", onEmptyAllItems);
+        $(".clone-container").on("click", ".deleteItem", onDeleteItem);
+      }
+
+      function getTestTheaters() {
+        var theaterArray = [
+          {
+            id: 1234,
+            name: "theater 1",
+            address: "123 Theater Way",
+            imageOne: "https://tinyurl.com/ywv9ka6u",
+            imageTwo: "https://tinyurl.com/yh7hr8cf",
+            imageThree: "https://tinyurl.com/4xaxt5ud",
+            isOpen: true,
+            openSince: 2019,
+          },
+          {
+            id: 0321,
+            name: "theater 2",
+            address: "456 Theater Way",
+            imageOne: "https://tinyurl.com/ywv9ka6u",
+            imageTwo: "https://tinyurl.com/yh7hr8cf",
+            imageThree: "https://tinyurl.com/4xaxt5ud",
+            isOpen: true,
+            openSince: 2020,
+          },
+          {
+            id: 6547,
+            name: "theater 3",
+            address: "789 Theater Way",
+            imageOne: "https://tinyurl.com/ywv9ka6u",
+            imageTwo: "https://tinyurl.com/yh7hr8cf",
+            imageThree: "https://tinyurl.com/4xaxt5ud",
+            isOpen: true,
+            openSince: 2018,
+          },
+          {
+            id: 9874,
+            name: "theater 4",
+            address: "321 Theater Way",
+            imageOne: "https://tinyurl.com/ywv9ka6u",
+            imageTwo: "https://tinyurl.com/yh7hr8cf",
+            imageThree: "https://tinyurl.com/4xaxt5ud",
+            isOpen: true,
+            openSince: 2017,
+          },
+          {
+            id: 7536,
+            name: "theater 5",
+            address: "654 Theater Way",
+            imageOne: "https://tinyurl.com/ywv9ka6u",
+            imageTwo: "https://tinyurl.com/yh7hr8cf",
+            imageThree: "https://tinyurl.com/4xaxt5ud",
+            isOpen: true,
+            openSince: 2021,
+          },
+        ];
+        return theaterArray;
+      }
+
+      function getTemplate() {
+        var theaterTemplate = $($("#itemTemplate").html()).clone();
+
+        return theaterTemplate;
+      }
+
+      function onShowItems(e) {
+        e.preventDefault();
+
+        var theaters = getTheaters();
+        renderItems(theaters);
+        console.log(theaters);
+      }
+
+      function renderItems(itemsArray) {
+        for (let i = 0; i < itemsArray.length; i++) {
+          const currentArray = itemsArray[i];
+
+          var newTemplate = getTemplate();
+          var container = $(".clone-container");
+
+          newTemplate.find(".card-title").text(currentArray.name);
+          newTemplate.find(".address").text(currentArray.address);
+          newTemplate.find(".first-image").attr("src", currentArray.imageOne);
+          newTemplate.find(".second-image").attr("src", currentArray.imageTwo);
+          newTemplate.find(".third-image").attr("src", currentArray.imageThree);
+          newTemplate.find(".is-open").text(currentArray.isOpen);
+          newTemplate.find(".in-business").text(currentArray.openSince);
+
+          container.append(newTemplate);
+        }
+      }
+
+      function onEmptyAllItems() {
+        $(".clone-container").empty();
+      }
+
+      function onDeleteItem() {
+        $(this).closest(".card").remove();
+      }
