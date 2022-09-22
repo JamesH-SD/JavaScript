@@ -1,0 +1,57 @@
+var entitiesService = {
+  endpoint: "https://api.URL/Goes/HERE",
+};
+
+entitiesService.getAll = () => {
+  const config = {
+    method: "GET",
+    url: entitiesService.endpoint,
+    crossdomain: true,
+    headers: { "Content-Type": "application/json" },
+  };
+  return axios(config);
+};
+
+entitiesService.getById = (id) => {
+  const config = {
+    method: "GET",
+    url: `${entitiesService.endpoint}/${id}`,
+    data: id,
+    crossdomain: true,
+    headers: { "Content-Type": "application/json" },
+  };
+  return axios(config);
+};
+
+entitiesService.deleteById = (id) => {
+  const config = {
+    method: "DELETE",
+    url: `${entitiesService.endpoint}/${id}`,
+    data: id,
+    crossdomain: true,
+    headers: { "Content-Type": "application/json" },
+  };
+  return axios(config);
+};
+
+entitiesService.add = (payload) => {
+  const config = {
+    method: "POST",
+    url: entitiesService.endpoint,
+    data: payload,
+    crossdomain: true,
+    headers: { "Content-Type": "application/json" },
+  };
+  return axios(config);
+};
+
+entitiesService.update = (id, payload) => {
+  const config = {
+    method: "PUT",
+    url: `${entitiesService.endpoint}/${id}`,
+    data: payload,
+    crossdomain: true,
+    headers: { "Content-Type": "application/json" },
+  };
+  return axios(config);
+};
