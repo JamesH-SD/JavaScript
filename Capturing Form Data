@@ -1,0 +1,28 @@
+var testData = {
+          email:"bob@gmail.com ",
+          password:"psw",
+          selectOptions:"option 2",
+          checkBox: false,
+          textarea:"i am text",
+        
+        };
+
+      function getFormData() {
+        var data = {
+          emailAddress: $("#inputEmail1").val(), 
+          userPass: $("#inputPassword1").val(), 
+          selectOption1: $("#codeLang").val(),
+          userCheckBox: $("#checkBox1").prop("checked"),
+          textArea: $("#formControlTextarea1").val()
+        };
+        
+        return data;
+      }
+
+      function writeFormData(formData) {
+        $("#inputEmail1").val(formData.emailAddress);
+        $("#inputPassword1").val(formData.userPass);
+        $("#codeLang").val(formData.selectOption1);
+        $("#checkBox1").prop("checked",formData.userCheckBox);        
+        $("#formControlTextarea1").val(formData.textArea);
+      }
