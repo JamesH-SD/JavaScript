@@ -1,0 +1,47 @@
+      function startUp() {
+        wireUpHandlers();
+      }
+
+      function wireUpHandlers() {
+        $("#alpha").on("click", onAlphaClicked);
+        $("#beta").on("click", onBetaClicked);
+        $("#gamma").on("click", onGammaClicked);
+        $("#cmdClick").on("click", onProfileSelected);
+        $("#cmdMouse").on("mouseover mouseout ", onProfileSelected);
+        $("#cmdDoubleClick").on("dblclick ", onProfileSelected);
+        $("#cmdCtrl").on("click", onProfileSelected);
+        $("#members-container").on("click", ".item", onChildClicked);
+      }
+
+      function onAlphaClicked(e) {
+        e.preventDefault();
+        console.log("alpha");
+      }
+
+      function onBetaClicked(e) {
+        e.preventDefault();
+        console.log("beta");
+      }
+
+      function onGammaClicked(e) {
+        e.preventDefault();
+        console.log("gama");
+      }
+
+      function showMessage(elementId, isSelected) {
+        $("#msg").html(`${elementId} ${isSelected}`);
+      }
+
+      function onProfileSelected(e) {
+        if (e.currentTarget.id == "cmdCrtl") {
+          if (e.Ctrl) {
+            $(this).closest(".card").toggleClass("isSelected");
+          }
+        } else {
+          $(this).closest(".card").toggleClass("isSelected");
+        }
+        var booleanValue = $(this).closest(".card").hasClass("isSelected");
+        showMessage(e.target.id, booleanValue);
+      }
+
+      function onChildClicked(e) {}
