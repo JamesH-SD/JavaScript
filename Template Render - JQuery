@@ -1,0 +1,31 @@
+function getTemplate(){
+                var temp = $("#templateThree").html();
+                templateThree = $(temp).clone();
+
+                return templateThree;
+            }
+
+            function renderTeamMember(teamMember){
+                var tempReady = getTemplate();
+                tempReady.find(".card-img-top").attr("src", teamMember.avatar);
+                tempReady.find(".card-title").text(`${teamMember.firstName} ${teamMember.lastName}`);
+                tempReady.find(".card-text").text(`${teamMember.email} ${teamMember.id}`);
+                var container = $(".clone-container");
+                container.append(tempReady);
+            }
+
+            function renderTeam(team){
+                for(let i = 0; i < team.length; i++);
+                const teamMember = team[i];
+
+                renderTeamMember(teamMember);
+            }
+
+            function clickHandler(){
+                $(".clone-container").on("click", ".t-3", iWasClicked);
+            }
+            function iWasClicked (){
+                var thisItem = $(this).find(".card-text").html();
+
+                console.log(thisItem);
+            }
