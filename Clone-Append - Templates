@@ -1,0 +1,59 @@
+function startUp(){
+        wireUpButtons();
+      }
+
+      function wireUpButtons(){
+        $(".clone-1").on("click", onCloneTemplateOne);
+        $(".clone-2").on("click", onCloneTemplateTwo);
+        $(".clone-3").on("click", onCloneTemplateThree);
+        $(".clear").on("click", clearContents);
+        $(".clone-change").on("click", copyClone);
+      }
+
+      var copyClone = function(){
+        var templateCopy = getTemplate()
+        $(".clone-container").append(templateCopy);
+
+        changeCloneContent(templateCopy);
+
+      }
+
+      function clearContents(){
+        $(".clone-container").empty();
+      }
+
+      function onCloneTemplateOne(){
+        var firstTemplate = $($("#templateOne").html()).clone();
+        var container = $(".clone-container");
+
+        container.append(firstTemplate);
+      }
+
+      function onCloneTemplateTwo(){
+        var secondTemplate = $($("#templateTwo").html()).clone();
+        var container = $(".clone-container");// or $(".clone-container").append(secondTemplate);
+
+        container.append(secondTemplate);
+      }
+
+      function onCloneTemplateThree(){
+        var thirdTemplate = $($("#templateThree").html()).clone();
+        var container = $(".clone-container");
+
+        container.append(thirdTemplate);
+      }
+
+      function getTemplate(){
+        var thirdTemplate = $($("#templateThree").html()).clone();
+        return thirdTemplate;
+      }
+
+      function addCloneToDom(jqClone){
+        $(".clone-container").append(jqClone);
+      }
+
+      function changeCloneContent(jqClone){
+        jqClone.find(".card-img-top").attr("src", "https://i.pravatar.cc/400?img=47");
+        jqClone.find(".card-text").text("Test Text 1");
+        jqClone.find(".card-title").text("Test Text 2");
+      }
