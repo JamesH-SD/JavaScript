@@ -1,0 +1,21 @@
+function startUp() {
+        hideFirstCard();
+        makeInvisible();
+        hideLastCard();
+      }
+
+      var hideFirstCard = function () {
+        $("div.col.card.text-white.bg-primary.m-2")
+          .first()
+          .css("display", "none");
+      };
+
+      var makeInvisible = function () {
+        $("div.col.card.text-white.bg-primary.inv.m-2")
+          .first()
+          .css("visibility", "hidden");
+      };
+
+      var hideLastCard = function () {
+        $("div.col.card.text-white.bg-primary.m-2").last().addClass("d-none");
+      };
