@@ -1,0 +1,106 @@
+    function startUp() {
+            wiredUpHandler()
+            
+            usersService.userLogin(payload)
+              .then(onLoginSuccess)
+              .catch(onLoginError);
+        }
+
+        onLoginSuccess = (response) => {
+            console.log("Login Successful!!", response);
+        }
+
+        onLoginError = (response) => {
+            console.warn("Login Failed!!", response);
+        }
+
+        function wiredUpHandler(){
+            $("#cmdSubmit").on("click", onClickPOSTSubmit);
+            $("#cmdRender").on("click", onClickGETAllRender);
+            $("#cmdClear").on("click", onClickClearForm);
+            // $(".clone-container").on("click", "#cmdEdit", onClickPUTEdit);
+            $(".clone-container").on("click", "#cmdDelete", onClickDELETE);
+        };
+
+        function onClickPOSTSubmit(e){
+            e.preventDefault()
+            console.log("Submit Clicked!");
+
+            var payload = getFormData(); // value received from getForm data is assigned to payload
+          
+        entitiesService
+            .add(payload) // this will be fed from getFormData
+            .then(onAddEntitySuccess)
+            .catch(onAddEntityError);
+        };
+
+        onAddEntitySuccess = (response) => {
+            console.log("Add Success", response);
+      };
+        onAddEntityError = (response) => {
+            console.warn(response);
+      };
+
+        function getFormData() {
+            var formData = {
+              stateNameInput: $("#stateNameInput").val(), 
+              capitalNameInput: $("#capitalNameInput").val(), 
+              statePopInput: $("#statePopInput").val(),
+              stateImgUrlInput: $("#stateImgUrlInput").val()
+          };
+
+            console.log("Form Data Submitted!", formData);
+            return formData;
+        };
+
+         function onClickGETAllRender(e){
+            e.preventDefault() 
+            console.log("Render Click Fired!");
+
+            entitiesService
+            .getAll()
+            .then(onGetAllEntitySuccess)
+            .catch(onGetAllEntityError);
+        }
+
+        onGetAllEntitySuccess = (response) => {
+            console.log("Get All - Response Success", response);
+
+            var successResp = response.data.items;
+            console.log("Render Capture Success", successResp);
+
+            var mapCardData = successResp.map(renderNewCards);
+        };
+        onGetAllEntityError = (response) => {
+           console.warn("Get All - Response Success", response);
+        };
+
+        function getTemplate(){
+            template = $($("#entityTemplate").html()).clone();
+            return template;
+        };
+
+        function renderNewCards(successResp){
+            var newCardTemplate = getTemplate();
+
+            newCardTemplate.find(".card-img-top").attr("src", successResp.stateImgUrlInput);
+            newCardTemplate.find(".card-title").text(`${successResp.stateNameInput}`); 
+            newCardTemplate.find(".card-text").text(`${successResp.capitalNameInput} \n ${successResp.statePopInput}`);
+            newCardTemplate.find(".card-text-id").text(`${successResp.id}`);
+
+            $(".row-id").append(newCardTemplate);
+            console.log("Cards Created!!", newCardTemplate);
+        };
+
+        function onClickClearForm(e){
+            e.preventDefault();
+            console.log("Clear was Clicked!") // I used the .reset() in the button code.
+        };
+
+        function onClickDELETE(e){
+            e.preventDefault();
+            console.log("Delete Card was Clicked!") 
+
+            var id = $(".card-text-id");
+
+            console.log("ID captured", id);
