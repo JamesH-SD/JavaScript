@@ -1,0 +1,33 @@
+var getNewSports = function (sportsAr) {
+        var sportsMap = sportsAr.map(mapSports);
+        console.log(mappedSports);
+
+        function mapSports(sportsMap) {
+          var newSportsArray = {
+            id: Number(sportsMap.idSport),
+            name: sportsMap.strSport,
+            thumbName: sportsMap.strSportThumb,
+            shortDescription: sportsMap.strSportDescription.slice(0, 50),
+            description: sportsMap.strSportDescription,
+          };
+
+          return newSportsArray;
+        }
+        return sportsMap;
+      };
+
+      var mappedSports = getNewSports(sports);
+
+      function filterSports(teams) {
+        let result = false;
+        if (teams.name == "Baseball" || teams.name == "Soccer") {
+          result = true;
+        }
+        return result;
+      }
+
+      var getBallSports = function (sportsAr) {
+        return sportsAr.filter(filterSports);
+      };
+
+      var newSports = getBallSports(mappedSports);
