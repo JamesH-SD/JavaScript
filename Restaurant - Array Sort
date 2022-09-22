@@ -1,0 +1,8 @@
+function loopThroughRestaurants(topRestaurants) {
+        for (let i = 0; i < topRestaurants.length; i++) {
+          const restRatings = topRestaurants[i];
+        }
+        if (restRatings.rating > 3) {
+          console.log(restRating.name);
+        }
+      }
