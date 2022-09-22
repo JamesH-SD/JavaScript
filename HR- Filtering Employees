@@ -1,0 +1,66 @@
+      let people = [
+        {
+          id: 1,
+          fName: "Barbie",
+          lName: "Ismay",
+          email: "bismay0@ezinearticles.com",
+          age: 20,
+        },
+        {
+          id: 2,
+          fName: "Winthrop",
+          lName: "Erbe",
+          email: "werbe1@reuters.com",
+          age: 63,
+        },
+        {
+          id: 3,
+          fName: "Cori",
+          lName: "MacGettigen",
+          email: "cmacgettigen2@virginia.edu",
+          age: 18,
+        },
+        {
+          id: 4,
+          fName: "Robyn",
+          lName: "Stannering",
+          email: "rstannering3@gnu.org",
+          age: 68,
+        },
+        {
+          id: 5,
+          fName: "Kile",
+          lName: "Iannini",
+          email: "kiannini4@yale.edu",
+          age: 22,
+        },
+      ];
+
+      var newPeople = people.map(mapThisPerson);
+
+      var filteredPeople = newPeople.filter(filterPerson);
+
+      function filterPerson(person) {
+        let result = false;
+
+        if (person.isOver21 === true) {
+          const dName = person.displayName
+            ? person.displayName.toUpperCase()
+            : "";
+
+          if (dName.indexOf("G") >= 0) {
+            result = true;
+          }
+        }
+
+        return result;
+      }
+
+      function mapThisPerson(person) {
+        var newPerson = {
+          displayName: `${person.fName} ${person.lName}`,
+          contactInfo: `Please email me at: ${person.email}`,
+          isOver21: person.age > 21,
+        };
+
+        return newPerson;
