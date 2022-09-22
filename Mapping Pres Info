@@ -1,0 +1,47 @@
+function mapPresidents(presidents) {
+        var nameParts = presidents.nm.split(" ");
+        var indexOf = presidents.nm.indexOf(" ");
+
+        var termLength = 0;
+        var presTermArray = presidents.tm.split("-");
+        if (presTermArray.length > 1) {
+          termLength = parseInt(presTermArray[1])
+            ? parseInt(presTermArray[1]) - parseInt(presTermArray[0])
+            : new Date().getFullYear() - parseInt(presTermArray[0]);
+        } else {
+          termLength = 1;
+        }
+
+        var presInfo = {};
+        presInfo.id = presidents.id;
+        presInfo.number = presidents.president;
+        presInfo.firstName = presidents.nm.substring(0, indexOf).trim();
+        presInfo.lastName = presidents.nm.substring(indexOf).trim();
+        presInfo.party = presidents.pp;
+        presInfo.yearsInOffice = termLength;
+
+        return presInfo;
+      }
+      var processPresidents = function (arrPresidents) {
+        var newPresArray = arrPresidents.map(mapPresidents);
+
+        return newPresArray;
+      };
+
+      var mappedPresidents = processPresidents(presidents);
+
+      var filterTwoTermPres = (president) => {
+        var result = false;
+        if (president.yearsInOffice > 4 && president.party !== "Democrat") {
+          result = true;
+        }
+        return result;
+      };
+
+      var getTwoTermPresidents = function (arrPresidents) {
+        return arrPresidents.filter(filterTwoTermPres);
+      };
+
+      getTwoTermPresidents(mappedPresidents);
+
+      console.log(mappedPresidents);
