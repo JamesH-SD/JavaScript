@@ -1,0 +1,110 @@
+<div class="container">
+      <div class="row">
+          <div class="col">
+              <form>
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          placeholder="Enter email">
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                          else.</small>
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+          </div>
+          <div class="col">
+              <form>
+                  <div class="form-group">
+                      <label for="exampleFormControlInput1">Email address</label>
+                      <input type="email" class="form-control" id="exampleFormControlInput1"
+                          placeholder="name@example.com">
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleFormControlSelect1">Example select</label>
+                      <select class="form-control" id="exampleFormControlSelect1">
+                          <option value="James">1</option>
+                          <option value="Amelia">2</option>
+                          <option value="Emily">3</option>
+                          <option value="Madison">4</option>
+                          <option value="Justin">5</option>
+                          <option value="Christian">6</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Example textarea</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                          value="option1" checked>
+                      <label class="form-check-label" for="exampleRadios1">
+                          Default radio
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                          value="option2">
+                      <label class="form-check-label" for="exampleRadios2">
+                          Second default radio
+                      </label>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer
+      class="do-not-remove container-fluid footer mx-auto fb-targert sabio"
+    >
+      <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+    <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
+    <script id="candidateCode">
+      //
+
+      function startUp() {
+        console.log("StartUp is Firing!!");
+
+        let testData = {email: "james@gmail.com", password: 1234567, hasAccepted: true};
+        writeFormData(testData);
+      }
+      function getFormData() {
+        var data = {
+          email : $("#exampleInputEmail1").val() // value was idetified using the console tools.  
+        , password : $("#exampleInputPassword1").val()// value was idetified using the console tools.
+        , hasAccepted : $("#exampleCheck1").prop("checked")}; // .prop("checked") will bring back a truthy or falsy for checkbox, or radio buttons
+        // 
+        return data;
+      }
+
+      function writeFormData(frmData){
+        console.log(frmData);
+
+          // frmData = frmData || {};
+
+          if(!frmData)
+          {
+            return;
+          }
+
+           $("#exampleInputEmail1").val(frmData.email);
+           $("#exampleInputPassword1").val(frmData.password);
+       
+        if(frmData.hasAccepted)
+          {
+            $("#exampleCheck1").prop("checked", true);
+          }
+      }
+
+      function clearForm(frmId){
+        // write the jQuery function to clear the form here
+      }
