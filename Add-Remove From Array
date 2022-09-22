@@ -1,0 +1,56 @@
+      var getNewTeam = function () {
+        var newMembers = [
+          {
+            id: 1234,
+            firstName: "James",
+            lastName: "Hughes",
+            email: "me@gmail.com",
+            gender: "Male",
+            avatar: "https://tinyurl.com/2pmh4jxn",
+          },
+          {
+            id: 9876,
+            firstName: "Amelia",
+            lastName: "Hughes",
+            email: "me@gmail.com",
+            gender: "Female",
+            avatar: "https://tinyurl.com/2pmh4jxn",
+          },
+        ];
+        return newMembers;
+      };
+
+      var addPerson = function (anArray) {
+        var newMember = {
+          id: 1234,
+          firstName: "James",
+          lastName: "Hughes",
+          email: "me@gmail.com",
+          gender: "Male",
+          avatar: "https://tinyurl.com/2pmh4jxn",
+        };
+        anArray.push(newMember);
+      };
+
+      var removePerson = function (indexOfPerson, anArray) {
+        var currentPerson = anArray.splice(indexOfPerson, 1);
+        return currentPerson;
+      };
+
+      var logNames = function (anArray) {
+        for (let i = 0; i < anArray.length; i++) {
+          const names = anArray[i];
+          console.log(names.firstName);
+        }
+      };
+
+      var findCandidate = function (people) {
+        var candidatePerson = [];
+        for (let i = 0; i < people.length; i++) {
+          const currentMembers = people[i];
+          if (currentMembers.lastName == "Sabio") {
+            candidatePerson.push(currentMembers);
+          }
+        }
+        return candidatePerson;
+      };
