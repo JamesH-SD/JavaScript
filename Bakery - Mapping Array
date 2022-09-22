@@ -1,8 +1,6 @@
 function mapCakes(treato) {
             console.log(treato, "treato")
 
-            //-----batters
-            //var battersArray = [];
             if (treato.batters && treato.batters.batter) { //if has treato.batters and treato.batters.batter
                 battersArray = treato.batters.batter.map(mapBatters) //we want to map the batter, it'll make a new array of batter
             }
