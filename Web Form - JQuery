@@ -44,4 +44,4 @@
         showMessage(e.target.id, booleanValue);
       }
 
-      function onChildClicked(e) {}
+      function onChildClicked(e) {};
